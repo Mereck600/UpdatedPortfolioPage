@@ -1,103 +1,107 @@
-import Image from "next/image";
+import { Grid, Paper, Typography, Stack, Box,Chip } from '@mui/material';
+import ScrollFadeBackground from '@/components/ScrollFadeBackground';
 
-export default function Home() {
+export default function HomePage() {
   return (
-    <div className="font-sans grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20">
-      <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="font-mono list-inside list-decimal text-sm/6 text-center sm:text-left">
-          <li className="mb-2 tracking-[-.01em]">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] font-mono font-semibold px-1 py-0.5 rounded">
-              src/app/page.js
-            </code>
-            .
-          </li>
-          <li className="tracking-[-.01em]">
-            Save and see your changes instantly.
-          </li>
-        </ol>
+    <>
+      {/* Fading background image behind content */}
+      <ScrollFadeBackground src="/berry_college.webp" start={40} end={500} blur={0} />
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 w-full sm:w-auto md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
-        </div>
-      </main>
-      <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
-    </div>
+      {/* HERO: full viewport height to ensure scroll into next section */}
+      <Box
+        component="section"
+        sx={{
+          minHeight: '100vh',
+          display: 'flex',
+          alignItems: 'center',
+          position: 'relative',
+          zIndex: 1, // keep above the background
+        }}
+      >
+        <Box sx={{ width: '100%' }}>
+          <Typography variant="h3" fontWeight={700} gutterBottom>
+            Hi, I’m Mereck McGowan.
+          </Typography>
+
+          <Typography variant="body1" color="text.secondary" sx={{ maxWidth: 680, mb: 3 }}>
+            I’m a software engineer who enjoys building clean UIs, reliable backends, and tinkering with hardware projects.
+            This site showcases select work, experiments, and ways to reach me.
+          </Typography>
+
+          <Grid container spacing={2}>
+            <Grid item xs={12} sm={6}>
+              <Paper sx={{ p: 2, border: '1px solid', borderColor: 'rgba(255,255,255,0.08)' }}>
+                <Typography variant="h6" gutterBottom>What I do</Typography>
+                <Typography variant="body2" color="text.secondary">
+                  Frontend (React/Next), backend APIs, data pipelines, and cloud deployment with a focus on performance and DX.
+                </Typography>
+              </Paper>
+            </Grid>
+            <Grid item xs={12} sm={6}>
+              <Paper sx={{ p: 2, border: '1px solid', borderColor: 'rgba(255,255,255,0.08)' }}>
+                <Typography variant="h6" gutterBottom>Currently</Typography>
+                <Typography variant="body2" color="text.secondary">
+                  Building full-stack apps, experimenting with realtime UX, and refining developer tooling.
+                </Typography>
+              </Paper>
+            </Grid>
+          </Grid>
+        </Box>
+      </Box>
+
+      {/* EDUCATION: placed after hero so the page scrolls */}
+      <Box
+        component="section"
+        sx={{ py: 8, position: 'relative', zIndex: 1 }}
+      >
+        <Stack spacing={1.5} sx={{ mb: 2 }}>
+          <Typography variant="overline" sx={{ letterSpacing: 1.5, color: 'text.secondary' }}>
+            Education
+          </Typography>
+          <Typography variant="h4" fontWeight={700}>
+            Academic Background
+          </Typography>
+        </Stack>
+
+        <Paper sx={{ p: 3,mb:3, border: '1px solid', borderColor: 'rgba(255,255,255,0.08)', maxWidth: 800 }}>
+          <Typography variant="h6" gutterBottom>
+            B.S. in Computer Science
+          </Typography>
+          <Typography variant="body2" color="text.secondary">
+            Berry College — Expected 2026
+          </Typography>
+          {/* Example bullets; add/modify as needed */}
+          <Stack direction="row" spacing={1} sx={{ mt: 1, flexWrap: 'wrap' }}>
+            <Chip label="Algorithms" size="small" variant="outlined" />
+            <Chip label="Operating Systems" size="small" variant="outlined" />
+            <Chip label="Databases" size="small" variant="outlined" />
+            <Chip label="Data Structures and Algorithms" size="small" variant="outlined" />
+            <Chip label="Machine Learning" size="small" variant="outlined" />
+          </Stack>
+        </Paper>
+        <Typography variant="h4" fontWeight={700}>
+            Extra Curiculars 
+          </Typography>
+        <Paper sx={{ p: 3, mt:3,border: '1px solid', borderColor: 'rgba(255,255,255,0.08)', maxWidth: 800 }}>
+          <Typography variant="h6" gutterBottom>
+            Computer Science Club 
+          </Typography>
+          <Typography variant="body2" color="text.secondary">
+            Club President — 2024 - 2026
+          </Typography>
+          {/* Example bullets; add/modify as needed */}
+          {/* <Stack direction="row" spacing={1} sx={{ mt: 1, flexWrap: 'wrap' }}>
+            <Chip label="Algorithms" size="small" variant="outlined" />
+            <Chip label="Operating Systems" size="small" variant="outlined" />
+            <Chip label="Databases" size="small" variant="outlined" />
+          </Stack> */}
+        </Paper>
+
+
+      </Box>
+
+      {/* Optional: tiny spacer for extra scroll room */}
+      {/* <Box sx={{ height: 120 }} /> */}
+    </>
   );
 }
