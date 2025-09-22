@@ -3,8 +3,8 @@ import { Grid, Link, Paper, Typography } from '@mui/material';
 
 const items = [
 { label: 'Resume (PDF)', href: '/Mereck_McGowan_Resume.pdf' },
-{ label: 'LinkedIn', href: 'https://www.linkedin.com/' },
-{ label: 'GitHub', href: 'https://github.com/' },
+{ label: 'LinkedIn', href: 'https://www.linkedin.com/in/mereck-mcgowan-3b68232b6/' },
+{ label: 'GitHub', href: 'https://github.com/mereck600' },
 { label: 'Email', href: 'mailto:mereck@example.com' },
 ];
 

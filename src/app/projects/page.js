@@ -3,18 +3,26 @@ import ProjectCard from '@/components/ProjectCard';
 
 
 const projects = [
-{
-title: 'BluetoothPi',
-description: 'Raspberry Pi 5 speaker controller with realtime LED effects and a React dashboard.',
-href: 'https://github.com/',
-tags: ['Raspberry Pi', 'FastAPI', 'React'],
-tilt: { x: 8, y: -8 },
-},
+
 {
 title: 'Reinforcement911',
 description: 'Nonprofit website with Stripe donations, Dockerized deploys, and AWS infra.',
 href: 'https://reinforcement911.org',
 tags: ['Next.js', 'Stripe', 'AWS'],
+tilt: { x: -6, y: 10 },
+},
+{
+title: 'Northland Psychological',
+description: 'Psychological Clinic website with Dockerized deploys, and AWS infra.',
+href: 'https://northlandpsychological.org',
+tags: ['React.js', 'Stripe', 'AWS'],
+tilt: { x: -6, y: 10 },
+},
+{
+title: 'Reinforcement Consulting',
+description: 'Consulting website with Dockerized deploys, and AWS infra.',
+href: 'https://reinforcement911.org',
+tags: ['React.js', 'Stripe', 'AWS'],
 tilt: { x: -6, y: 10 },
 },
 {
@@ -25,11 +33,25 @@ tags: ['Python', 'PostgreSQL', 'Pandas'],
 tilt: { x: 10, y: 6 },
 },
 {
+title: 'Mereckos',
+description: 'Simple OS (in progress) fat12 file system, C development',
+href: 'https://github.com/Mereck600/MereckOS',
+tags: ['ASM', 'C','makeFiles'],
+tilt: { x: 10, y: 6 },
+},
+{
 title: 'CaseNetsClassifier',
 description: 'Experimental case‑based reasoning with Siamese nets and PyTorch.',
 href: 'https://github.com/',
 tags: ['PyTorch', 'CBR', 'DL'],
 tilt: { x: -9, y: -5 },
+},
+{
+title: 'BluetoothPi',
+description: 'Raspberry Pi 5 speaker controller with realtime LED effects and a React dashboard.',
+href: 'https://github.com/',
+tags: ['Raspberry Pi', 'FastAPI', 'React'],
+tilt: { x: 8, y: -8 },
 },
 ];
 
