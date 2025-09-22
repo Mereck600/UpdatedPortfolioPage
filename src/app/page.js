@@ -70,7 +70,7 @@ export default function HomePage() {
           <Typography variant="body2" color="text.secondary">
             Berry College — Expected 2026
           </Typography>
-          {/* Example bullets; add/modify as needed */}
+          
           <Stack direction="row" spacing={1} sx={{ mt: 1, flexWrap: 'wrap' }}>
             <Chip label="Algorithms" size="small" variant="outlined" />
             <Chip label="Operating Systems" size="small" variant="outlined" />
@@ -89,19 +89,14 @@ export default function HomePage() {
           <Typography variant="body2" color="text.secondary">
             Club President — 2024 - 2026
           </Typography>
-          {/* Example bullets; add/modify as needed */}
-          {/* <Stack direction="row" spacing={1} sx={{ mt: 1, flexWrap: 'wrap' }}>
-            <Chip label="Algorithms" size="small" variant="outlined" />
-            <Chip label="Operating Systems" size="small" variant="outlined" />
-            <Chip label="Databases" size="small" variant="outlined" />
-          </Stack> */}
+          
         </Paper>
 
 
       </Box>
 
-      {/* Optional: tiny spacer for extra scroll room */}
-      {/* <Box sx={{ height: 120 }} /> */}
+      {/*  tiny spacer for extra scroll  */}
+      <Box sx={{ height: 120 }} />
     </>
   );
 }
