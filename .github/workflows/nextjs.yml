@@ -43,7 +43,7 @@ jobs:
           node-version: "20"
           cache: ${{ steps.detect-package-manager.outputs.manager }}
 
-      # Optional but recommended for GitHub Pages
+      # (Optional) Configure Pages; no inputs needed since you set basePath yourself
       - name: Configure Pages
         uses: actions/configure-pages@v5
 
@@ -58,7 +58,6 @@ jobs:
       - name: Install dependencies
         run: ${{ steps.detect-package-manager.outputs.manager }} ${{ steps.detect-package-manager.outputs.command }}
 
-      # With output: 'export' in next.config, next build writes ./out
       - name: Build (static export)
         run: ${{ steps.detect-package-manager.outputs.runner }} next build
 
