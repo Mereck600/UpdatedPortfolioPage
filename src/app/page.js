@@ -24,7 +24,7 @@ export default function HomePage() {
           </Typography>
 
           <Typography variant="body1" color="text.secondary" sx={{ maxWidth: 680, mb: 3 }}>
-            I’m a software engineer who enjoys building clean UIs, reliable backends, and tinkering with hardware projects.
+            I’m a software engineer who enjoys building websites, reliable backends, Machine Learning research, creating creative works and tinkering with hardware projects.
             This site showcases select work, experiments, and ways to reach me.
           </Typography>
 
@@ -35,13 +35,16 @@ export default function HomePage() {
                 <Typography variant="body2" color="text.secondary">
                   Frontend (React/Next), backend APIs, data pipelines, and cloud deployment with a focus on performance and DX.
                 </Typography>
+                <Typography variant="body2" color="text.secondary">
+                  In addition to this, I am a Machine Learning researcher, I enjoy working on new and challenging projects like OS development, and other new assorted of work. 
+                </Typography>
               </Paper>
             </Grid>
             <Grid item xs={12} sm={6}>
               <Paper sx={{ p: 2, border: '1px solid', borderColor: 'rgba(255,255,255,0.08)' }}>
                 <Typography variant="h6" gutterBottom>Currently</Typography>
                 <Typography variant="body2" color="text.secondary">
-                  Building full-stack apps, experimenting with realtime UX, and refining developer tooling.
+                  Building full-stack apps, experimenting with realtime UX, refining developer tooling, building the next generation of Machine Learning.
                 </Typography>
               </Paper>
             </Grid>

@@ -47,7 +47,7 @@ jobs:
       - name: Setup Pages
         uses: actions/configure-pages@v5
         with:
-          # This injects basePath for project pages and turns off Next/Image server optimization.
+          # Injects basePath for project pages and disables Next/Image server optimization.
           static_site_generator: next
 
       - name: Restore cache
@@ -61,11 +61,8 @@ jobs:
       - name: Install dependencies
         run: ${{ steps.detect-package-manager.outputs.manager }} ${{ steps.detect-package-manager.outputs.command }}
 
-      - name: Build with Next.js
+      - name: Build with Next.js (creates ./out via output: 'export')
         run: ${{ steps.detect-package-manager.outputs.runner }} next build
-
-      - name: Export static site
-        run: ${{ steps.detect-package-manager.outputs.runner }} next export
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
