@@ -1,7 +1,7 @@
-// Example: postcss.config.js
-module.exports = {
+// ESM export — supported by Next 15
+export default {
   plugins: {
     tailwindcss: {},
-    // Remove autoprefixer: {}
-  }
-}
+    autoprefixer: {},
+  },
+};
