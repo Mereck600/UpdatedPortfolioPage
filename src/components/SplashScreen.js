@@ -3,11 +3,25 @@
 import Image from 'next/image';
 import { motion, AnimatePresence } from 'framer-motion';
 
+// Ensure the path starts with a single leading slash
+function ensureLeadingSlash(path) {
+  if (!path) return '/';
+  return path.startsWith('/') ? path : `/${path}`;
+}
+
+// Prefix with the repo base path in production (set in next.config.mjs)
+function withBasePrefix(path) {
+  const base = process.env.NEXT_PUBLIC_BASE_PATH || '';
+  // avoid double-prefixing if already includes the base
+  if (base && path.startsWith(base + '/')) return path;
+  return `${base}${path}`;
+}
+
 /**
  * Props:
- *  - src: string path under /public (e.g. "/Splash.png")
+ *  - src: string path under /public (e.g. "/logo.png" or "logo.png")
  *  - fadeIn, hold, fadeOut: seconds
- *  - mode: "fixed" | "fill"  (choose how to size the image)
+ *  - mode: "fixed" | "fill"
  *  - width, height: used only when mode === "fixed"
  */
 export default function SplashScreen({
@@ -19,6 +33,9 @@ export default function SplashScreen({
   width = 900,
   height = 260,
 }) {
+  const normalized = ensureLeadingSlash(src);
+  const finalSrc = withBasePrefix(normalized);
+
   return (
     <AnimatePresence>
       <div
@@ -40,7 +57,7 @@ export default function SplashScreen({
           {mode === 'fill' ? (
             <div style={{ position: 'relative', width: '80vw', height: '40vh' }}>
               <Image
-                src={src}
+                src={finalSrc}
                 alt="Splash"
                 fill
                 sizes="80vw"
@@ -50,7 +67,7 @@ export default function SplashScreen({
             </div>
           ) : (
             <Image
-              src={src}
+              src={finalSrc}
               alt="Splash"
               width={width}
               height={height}
