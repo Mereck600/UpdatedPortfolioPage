@@ -1,30 +1,17 @@
-// src/app/image-test/page.tsx
 import Image from "next/image";
-
 const prefix = process.env.NEXT_PUBLIC_BASE_PATH || "";
 
 export default function Page() {
   return (
     <main style={{ padding: 24 }}>
-      <h1>Image test</h1>
+      <h1>Diag</h1>
+      <p>prefix = <code>{prefix || '(empty)'}</code></p>
 
-      <h2>Next &lt;Image&gt; from /public (no prefix)</h2>
-      <Image src="/images/hero.jpg" alt="via next/image" width={600} height={300} />
+      <h2>next/image (auto-prefixed)</h2>
+      <Image src="/berry_college.webp" alt="next-image" width={400} height={250} />
 
-      <h2>Raw &lt;img&gt; (with prefix)</h2>
-      <img src={`${prefix}/images/hero.jpg`} alt="via raw img" width={600} height={300} />
-
-      <h2>Static import (no prefix)</h2>
-      {/* @ts-expect-error: ignore type if not TS */}
-      <ImportDemo />
+      <h2>raw &lt;img&gt; (manual prefix)</h2>
+      <img src={`${prefix}/berry_college.webp`} alt="raw-img" width={400} height={250} />
     </main>
   );
-}
-
-function ImportDemo() {
-  // If TypeScript complains, switch this file to .jsx/.tsx accordingly
-  // and ensure the image exists at public/images/hero.jpg
-  // Or import a real image you have in /public/images
-  // import pic from "@/public/images/hero.jpg";
-  return <p style={{ opacity: 0.6 }}>Uncomment static import demo when ready.</p>;
 }
