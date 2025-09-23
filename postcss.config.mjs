@@ -1,7 +1,7 @@
-// ESM format
+// postcss.config.mjs
 export default {
   plugins: {
-    tailwindcss: {},
+    '@tailwindcss/postcss': {},  // <-- v4 plugin
     autoprefixer: {},
   },
 };
