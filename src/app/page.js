@@ -96,7 +96,7 @@ export default function HomePage() {
         </Paper>
         <Paper sx={{ p: 3, mt:3,border: '1px solid', borderColor: 'rgba(255,255,255,0.08)', maxWidth: 800 }}>
           <Typography variant="h6" gutterBottom>
-            Berry Men's Lacrosse 
+            Berry Mens Lacrosse 
           </Typography>
           <Typography variant="body2" color="text.secondary">
             Student Athelete  — 2022 - 2024
