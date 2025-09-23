@@ -26,6 +26,7 @@ function withBasePrefix(path) {
  *  - end   : scrollY (px) where image is fully visible
  *  - blur  : optional blur (px) to soften the image
  */
+
 export default function ScrollFadeBackground({
   src = '/bg.jpg',
   start = 120,
@@ -55,7 +56,7 @@ export default function ScrollFadeBackground({
       {/* Fill the viewport with the image */}
       <div style={{ position: 'absolute', inset: 0 }}>
         <Image
-          src={finalSrc}           // << use prefixed path
+          src={finalSrc}           
           alt=""
           fill
           sizes="100vw"
@@ -68,7 +69,7 @@ export default function ScrollFadeBackground({
         />
       </div>
 
-      {/* Optional dark vignette to preserve text contrast */}
+      {/*make contrast good */}
       <div
         style={{
           position: 'absolute',

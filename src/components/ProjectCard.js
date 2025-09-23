@@ -1,6 +1,6 @@
 'use client';
 
-import { Card, CardContent, Chip, Stack, Typography } from '@mui/material';
+import { Card, CardContent, Chip, Stack, Typography,Button } from '@mui/material';
 import { motion, useMotionValue, useTransform } from 'framer-motion';
 import { useMemo } from 'react';
 
@@ -46,6 +46,14 @@ export default function ProjectCard({ project }) {
       transition={{ type: 'spring', stiffness: 250, damping: 22 }}
     >
       <Card sx={{ p: 2, height: '100%' }}>
+      <Button
+            variant="none"
+            href={project.href}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+           
+          
         <CardContent>
           <Typography variant="h6" gutterBottom sx={{ transform: 'translateZ(30px)' }}>
             {project.title}
@@ -60,7 +68,9 @@ export default function ProjectCard({ project }) {
               ))}
             </Stack>
           )}
+          
         </CardContent>
+        </Button>
       </Card>
     </motion.div>
   );
