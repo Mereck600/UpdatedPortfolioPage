@@ -27,15 +27,15 @@ export default function ProjectCard({ project }) {
 
   const x = useMotionValue(0);
   const y = useMotionValue(0);
-  const rotateX = useTransform(y, [50, -50], [tilt.x, -tilt.x]);
-  const rotateY = useTransform(x, [-50, 50], [-tilt.y, tilt.y]);
+  const rotateX = useTransform(y, [60, -60], [tilt.x, -tilt.x]);
+  const rotateY = useTransform(x, [-60, 60], [-tilt.y, tilt.y]);
 
   function onMouseMove(e) {
     const rect = e.currentTarget.getBoundingClientRect();
     const px = e.clientX - rect.left - rect.width / 2;
     const py = e.clientY - rect.top - rect.height / 2;
-    x.set((px / (rect.width / 2)) * 50);
-    y.set((py / (rect.height / 2)) * 50);
+    x.set((px / (rect.width / 2)) * 60);
+    y.set((py / (rect.height / 2)) * 60);
   }
 
   return (
@@ -43,7 +43,7 @@ export default function ProjectCard({ project }) {
       onMouseMove={onMouseMove}
       style={{ rotateX, rotateY, transformStyle: 'preserve-3d' }}
       whileHover={{ scale: 1.02 }}
-      transition={{ type: 'spring', stiffness: 300, damping: 22 }}
+      transition={{ type: 'spring', stiffness: 250, damping: 22 }}
     >
       <Card sx={{ p: 2, height: '100%' }}>
         <CardContent>
