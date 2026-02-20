@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useEffect, useState, useMemo } from "react";
+import React, { useEffect, useMemo, useState } from "react";
 import { AppBar, Toolbar, Typography, Button, Box, Container } from "@mui/material";
 import Link from "next/link";
 
@@ -8,15 +8,16 @@ export default function PdfViewer({ src, title }) {
   const [pdfUrl, setPdfUrl] = useState("");
 
   useEffect(() => {
+    // window is safe here (client only)
     const p = new URLSearchParams(window.location.search);
     const fromQuery = p.get("file");
     setPdfUrl(fromQuery ? decodeURIComponent(fromQuery) : (src || ""));
   }, [src]);
 
   const fileName = useMemo(() => {
-    const fallback = "/Mereck_McGowan_Resume_2.pdf";
-    const last = pdfUrl?.split("/").pop() || fallback;
-    return last.split("?")[0] || fallback;
+    const fallback = "Resume.pdf";
+    const last = (pdfUrl?.split("/").pop() || fallback).split("?")[0];
+    return last || fallback;
   }, [pdfUrl]);
 
   const displayTitle = title || fileName;
@@ -29,26 +30,16 @@ export default function PdfViewer({ src, title }) {
             {displayTitle}
           </Typography>
 
-         <Button
-          variant="contained"
-          {...(pdfUrl ? { href: pdfUrl, download: fileName } : {})}
-          disabled={!pdfUrl}
-        >
-          Download
-        </Button>
+          <Button variant="contained" {...(pdfUrl ? { href: pdfUrl, download: fileName } : {})} disabled={!pdfUrl}>
+            Download
+          </Button>
 
         
-
-          
         </Toolbar>
       </AppBar>
 
       {pdfUrl ? (
-        <embed
-          src={pdfUrl}
-          type="application/pdf"
-          style={{ width: "100%", height: "100%", border: 0, background: "rgba(0,0,0,0.04)" }}
-        />
+        <embed src={pdfUrl} type="application/pdf" style={{ width: "100%", height: "100%", border: 0 }} />
       ) : (
         <Container sx={{ height: "100%", display: "grid", placeItems: "center", textAlign: "center", color: "text.secondary" }}>
           <Box>

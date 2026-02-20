@@ -7,7 +7,7 @@ const items = [
   { label: 'LinkedIn', href: 'https://www.linkedin.com/in/mereck-mcgowan-3b68232b6/' },
   { label: 'GitHub', href: 'https://github.com/mereck600' },
 ];
-let width = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth;
+let width = document.documentElement.clientWidth || document.body.clientWidth;
 
 export default function ContactPage() {
 
