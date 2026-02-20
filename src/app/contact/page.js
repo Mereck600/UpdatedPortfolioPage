@@ -67,7 +67,7 @@ export default function ContactPage() {
       <Box
         sx={{
           width: '100%',
-          maxWidth: width,   
+          maxWidth: '100%',   
           mb: 10,
         }}
       >
