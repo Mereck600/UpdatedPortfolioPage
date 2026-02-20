@@ -1,4 +1,4 @@
-import { Grid, Typography } from '@mui/material';
+import { Stack, Typography,Box } from '@mui/material';
 import ProjectCard from '@/components/ProjectCard';
 
 
@@ -26,25 +26,11 @@ tags: ['React.js', 'Stripe', 'AWS'],
 tilt: { x: -6, y: 10 },
 },
 {
-title: 'FleetPay Audit',
-description: 'ETL + analytics for logistics auditing, heavy SQL and Python data wrangling.',
-href: 'https://github.com/',
-tags: ['Python', 'PostgreSQL', 'Pandas'],
-tilt: { x: 10, y: 6 },
-},
-{
 title: 'Mereckos',
 description: 'Simple OS (in progress) fat12 file system, C development',
 href: 'https://github.com/Mereck600/MereckOS',
 tags: ['ASM', 'C','makeFiles'],
 tilt: { x: 10, y: 6 },
-},
-{
-title: 'CaseNetsClassifier',
-description: 'Experimental case‑based reasoning with Siamese nets and PyTorch.',
-href: 'https://github.com/',
-tags: ['PyTorch', 'CBR', 'DL'],
-tilt: { x: -9, y: -5 },
 },
 {
 title: 'BluetoothPi',
@@ -53,20 +39,61 @@ href: 'https://github.com/Mereck600/BluetoothPi',
 tags: ['Raspberry Pi', 'FastAPI', 'React'],
 tilt: { x: 8, y: -8 },
 },
+{
+title: 'FleetPay Audit',
+description: 'ETL + analytics for logistics auditing, heavy SQL and Python data wrangling, created for Mohawk Industries.',
+href: 'https://github.com/mereck600',
+tags: ['Python', 'PostgreSQL', 'Pandas'],
+tilt: { x: 10, y: 6 },
+},
+{
+title: 'CaseNetsClassifier',
+description: 'Experimental case‑based reasoning with Siamese nets and PyTorch.',
+href: 'https://github.com/mereck600',
+tags: ['PyTorch', 'CBR', 'DL'],
+tilt: { x: -9, y: -5 },
+},
 ];
 
 
+
+
+
 export default function ProjectsPage() {
-return (
-<section>
-    <Typography variant="h3" fontWeight={700} gutterBottom>Projects</Typography>
-    <Grid container spacing={2}>
+  return (
+    <section>
+      <Box
+      sx={{
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'center', 
+        textAlign: 'center',
+      }}
+    >
+
+      {/* TITLE */}
+      <Typography variant="h3" fontWeight={700} gutterBottom>
+        Projects
+      </Typography>
+
+      {/* DESCRIPTION */}
+      <Typography
+        variant="body1"
+        color="text.secondary"
+        sx={{ maxWidth: 600, mb: 4 }}
+      >
+        Feel free to check out some of my recent projects!
+      </Typography>
+      <Stack spacing={3}>
         {projects.map((p) => (
-        <Grid item xs={12} sm={6} md={4} key={p.title}>
-        <ProjectCard project={p} />
-    </Grid>
-    ))}
-    </Grid>
-</section>
-);
+          <ProjectCard key={p.title} project={p} />
+        ))}
+      </Stack>
+
+      </Box>
+      
+      
+     
+    </section>
+  );
 }

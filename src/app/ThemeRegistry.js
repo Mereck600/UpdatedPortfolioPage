@@ -5,15 +5,16 @@ import { CacheProvider } from '@emotion/react';
 import { useServerInsertedHTML } from 'next/navigation';
 import { useState } from 'react';
 
+import { CssBaseline, ThemeProvider } from '@mui/material';
+import theme from '@/theme/theme'; // adjust if your theme file path differs
+
 export default function ThemeRegistry({ children }) {
-  // Create a single cache for the whole app (stable across renders)
   const [cache] = useState(() => {
     const c = createCache({ key: 'mui', prepend: true });
-    c.compat = true; // important for MUI + Emotion with App Router
+    c.compat = true;
     return c;
   });
 
-  // Inject Emotion's critical CSS during SSR so markup matches on the client
   useServerInsertedHTML(() => {
     const { inserted } = cache;
     const names = Object.keys(inserted);
@@ -27,5 +28,12 @@ export default function ThemeRegistry({ children }) {
     );
   });
 
-  return <CacheProvider value={cache}>{children}</CacheProvider>;
+  return (
+    <CacheProvider value={cache}>
+      <ThemeProvider theme={theme}>
+        <CssBaseline />
+        {children}
+      </ThemeProvider>
+    </CacheProvider>
+  );
 }

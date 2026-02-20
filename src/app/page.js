@@ -74,12 +74,16 @@ export default function HomePage() {
             Berry College — Expected 2026
           </Typography>
           
-          <Stack direction="row" spacing={1} sx={{ mt: 1, flexWrap: 'wrap' }}>
+          <Stack direction="row" spacing={1} sx={{ mt: 1,mb:2, flexWrap: 'wrap' }}>
             <Chip label="Algorithms" size="small" variant="outlined" />
             <Chip label="Operating Systems" size="small" variant="outlined" />
+            <Chip label="Desiging Programming Languages" size="small" variant="outlined" />
             <Chip label="Databases" size="small" variant="outlined" />
             <Chip label="Data Structures and Algorithms" size="small" variant="outlined" />
             <Chip label="Machine Learning" size="small" variant="outlined" />
+            <Chip label="Artifical Intellegence" size="small" variant="outlined" />
+            <Chip label="Web Development" size="small" variant="outlined" />
+            <Chip label="Extended Reality" size="small" variant="outlined" />
           </Stack>
         </Paper>
         <Typography variant="h4" fontWeight={700}>
@@ -96,7 +100,7 @@ export default function HomePage() {
         </Paper>
         <Paper sx={{ p: 3, mt:3,border: '1px solid', borderColor: 'rgba(255,255,255,0.08)', maxWidth: 800 }}>
           <Typography variant="h6" gutterBottom>
-            Berry Mens Lacrosse 
+            Berry Men's Lacrosse 
           </Typography>
           <Typography variant="body2" color="text.secondary">
             Student Athelete  — 2022 - 2024

@@ -1,22 +1,8 @@
 'use client';
 
+import { useEffect, useState } from 'react';
 import Image from 'next/image';
 import { motion, AnimatePresence } from 'framer-motion';
-
-// Ensure the path starts with a single leading slash
-function ensureLeadingSlash(path) {
-  if (!path) return '/';
-  return path.startsWith('/') ? path : `/${path}`;
-}
-
-// Prefix with the repo base path in production (set in next.config.mjs)
-function withBasePrefix(path) {
-  const base = process.env.NEXT_PUBLIC_BASE_PATH || '';
-  // avoid double-prefixing if already includes the base
-  if (base && path.startsWith(base + '/')) return path;
-  return `${base}${path}`;
-}
-
 /**
  * Props:
  *  - src: string path under /public (e.g. "/logo.png" or "logo.png")
@@ -33,8 +19,35 @@ export default function SplashScreen({
   width = 900,
   height = 260,
 }) {
-  const normalized = ensureLeadingSlash(src);
-  const finalSrc = withBasePrefix(normalized);
+  const [show, setShow] = useState(false);
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+
+    const hasSeen = localStorage.getItem('hasSeenSplash');
+
+    if (!hasSeen) {
+      setShow(true);
+
+      // mark as seen so we never show again
+      localStorage.setItem('hasSeenSplash', 'true');
+    }
+  }, []);
+
+  useEffect(() => {
+    if (!show) return;
+
+    const totalTime = (fadeIn + hold + fadeOut) * 1000;
+
+    const timer = setTimeout(() => {
+      setShow(false);
+    }, totalTime);
+
+    return () => clearTimeout(timer);
+  }, [show, fadeIn, hold, fadeOut]);
+
+  if (!mounted || !show) return null;
 
   return (
     <AnimatePresence>
@@ -48,7 +61,6 @@ export default function SplashScreen({
           background: '#000',
         }}
       >
-        {/* Fade in the image */}
         <motion.div
           initial={{ opacity: 0, scale: 0.96 }}
           animate={{ opacity: 1, scale: 1 }}
@@ -57,7 +69,7 @@ export default function SplashScreen({
           {mode === 'fill' ? (
             <div style={{ position: 'relative', width: '80vw', height: '40vh' }}>
               <Image
-                src={finalSrc}
+                src={src}
                 alt="Splash"
                 fill
                 sizes="80vw"
@@ -67,17 +79,15 @@ export default function SplashScreen({
             </div>
           ) : (
             <Image
-              src={finalSrc}
+              src={src}
               alt="Splash"
               width={width}
               height={height}
               priority
-              style={{ display: 'block' }}
             />
           )}
         </motion.div>
 
-        {/* Fade to black overlay to transition out */}
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}

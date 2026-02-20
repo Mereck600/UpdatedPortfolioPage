@@ -1,31 +1,22 @@
-import React, { useMemo } from "react";
-import { AppBar, Toolbar, Typography, Button, Box, Container } from "@mui/material";
+'use client';
 
-/**
- * PdfViewer
- * - Shows a PDF in an <embed> with a sticky toolbar.
- * - Props:
- *    - src: string | undefined  → PDF url or path (optional if you use ?file=)
- *    - title: string | undefined → Optional title in the toolbar
- * - You can also pass a file via URL param: ?file=/docs/my.pdf
- *
- * Tips:
- *  - If the PDF is inside /public, use src="/my-file.pdf" or "/docs/my.pdf"
- *  - For GitHub raw: "https://raw.githubusercontent.com/USER/REPO/BRANCH/path/to/file.pdf"
- */
+import React, { useEffect, useState, useMemo } from "react";
+import { AppBar, Toolbar, Typography, Button, Box, Container } from "@mui/material";
+import Link from "next/link";
+
 export default function PdfViewer({ src, title }) {
-  const pdfUrl = useMemo(() => {
+  const [pdfUrl, setPdfUrl] = useState("");
+
+  useEffect(() => {
     const p = new URLSearchParams(window.location.search);
     const fromQuery = p.get("file");
-    return fromQuery ? decodeURIComponent(fromQuery) : src || "";
+    setPdfUrl(fromQuery ? decodeURIComponent(fromQuery) : (src || ""));
   }, [src]);
 
   const fileName = useMemo(() => {
-    try {
-      return (pdfUrl?.split("/").pop() || "/Mereck_McGowan_Resume.pdf").split("?")[0];
-    } catch {
-      return "/Mereck_McGowan_Resume.pdf";
-    }
+    const fallback = "/Mereck_McGowan_Resume_2.pdf";
+    const last = pdfUrl?.split("/").pop() || fallback;
+    return last.split("?")[0] || fallback;
   }, [pdfUrl]);
 
   const displayTitle = title || fileName;
@@ -37,34 +28,21 @@ export default function PdfViewer({ src, title }) {
           <Typography variant="subtitle1" noWrap sx={{ flex: 1 }}>
             {displayTitle}
           </Typography>
+
+         <Button
+          variant="contained"
+          {...(pdfUrl ? { href: pdfUrl, download: fileName } : {})}
+          disabled={!pdfUrl}
+        >
+          Download
+        </Button>
+
+        
+
           
-          <Button
-            variant="contained"
-            href={pdfUrl}
-            download={fileName}
-          >
-            Download
-          </Button>
-          <Button
-            variant="outlined"
-            href={pdfUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Open in New Tab
-          </Button>
-          <Button
-            variant="outlined"
-            href="{pdfUrl}"
-            
-            rel="noopener noreferrer"
-          >
-            Home
-          </Button>
         </Toolbar>
       </AppBar>
 
-      {/* PDF area */}
       {pdfUrl ? (
         <embed
           src={pdfUrl}
@@ -72,15 +50,7 @@ export default function PdfViewer({ src, title }) {
           style={{ width: "100%", height: "100%", border: 0, background: "rgba(0,0,0,0.04)" }}
         />
       ) : (
-        <Container
-          sx={{
-            height: "100%",
-            display: "grid",
-            placeItems: "center",
-            textAlign: "center",
-            color: "text.secondary",
-          }}
-        >
+        <Container sx={{ height: "100%", display: "grid", placeItems: "center", textAlign: "center", color: "text.secondary" }}>
           <Box>
             <Typography variant="h6" gutterBottom>No PDF provided</Typography>
             <Typography variant="body2">

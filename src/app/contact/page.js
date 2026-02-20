@@ -1,32 +1,82 @@
-import { Grid, Link, Paper, Typography } from '@mui/material';
+'use client';
 
+import { Grid, Paper, Typography, Button, Box } from '@mui/material';
+import PdfViewer from '@/components/PDFViewer';
 
 const items = [
-{ label: 'Resume (PDF)', href: '/Mereck_McGowan_Resume.pdf' },
-{ label: 'LinkedIn', href: 'https://www.linkedin.com/in/mereck-mcgowan-3b68232b6/' },
-{ label: 'GitHub', href: 'https://github.com/mereck600' },
-{ label: 'Email', href: 'mailto:mereck@example.com' },
+  { label: 'LinkedIn', href: 'https://www.linkedin.com/in/mereck-mcgowan-3b68232b6/' },
+  { label: 'GitHub', href: 'https://github.com/mereck600' },
 ];
-
+let width = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth;
 
 export default function ContactPage() {
-return (
-<section>
-<Typography variant="h3" fontWeight={700} gutterBottom>Contact</Typography>
-<Typography variant="body1" color="text.secondary" sx={{ maxWidth: 680, mb: 3 }}>
-The fastest way to reach me is email. You can also find my resume and social links below.
-</Typography>
-<Grid container spacing={2}>
-{items.map((it) => (
-<Grid item xs={12} sm={6} key={it.label}>
-<Paper sx={{ p: 2, border: '1px solid', borderColor: 'rgba(255,255,255,0.08)' }}>
-<Link href={it.href} target={it.href.startsWith('http') ? '_blank' : undefined} underline="none" color="inherit">
-{it.label}
-</Link>
-</Paper>
-</Grid>
-))}
-</Grid>
-</section>
-);
+
+  const handleClick = (item) => {
+    if (item.href?.startsWith('http')) {
+      window.open(item.href, '_blank');
+    }
+  };
+
+  return (
+    <Box
+      sx={{
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'center', 
+        textAlign: 'center',
+      }}
+    >
+
+      {/* TITLE */}
+      <Typography variant="h3" fontWeight={700} gutterBottom>
+        Contact
+      </Typography>
+
+      {/* DESCRIPTION */}
+      <Typography
+        variant="body1"
+        color="text.secondary"
+        sx={{ maxWidth: 600, mb: 4 }}
+      >
+        The fastest way to reach me is through LinkedIn. You can also find my resume and social links below.
+      </Typography>
+
+      {/* BUTTONS */}
+      <Grid
+        container
+        spacing={2}
+        justifyContent="center"
+        sx={{ maxWidth: 500, mb: 6 }} // 🔥 keeps them centered & not too wide
+      >
+        {items.map((it) => (
+          <Grid item xs={12} key={it.label}>
+            <Paper sx={{ p: 1 }}>
+              <Button
+                fullWidth
+                variant="contained"
+                onClick={() => handleClick(it)}
+              >
+                {it.label}
+              </Button>
+            </Paper>
+          </Grid>
+        ))}
+      </Grid>
+
+      {/* RESUME (WIDER) */}
+      <Box
+        sx={{
+          width: '100%',
+          maxWidth: width,   
+          mb: 10,
+        }}
+      >
+        <PdfViewer
+          src="/Mereck_McGowan_Resume_2.pdf"
+          title="Resume"
+        />
+      </Box>
+
+    </Box>
+  );
 }
