@@ -46,7 +46,7 @@ export default function ContactPage() {
         container
         spacing={2}
         justifyContent="center"
-        sx={{ maxWidth: 500, mb: 6 }} // 🔥 keeps them centered & not too wide
+        sx={{ maxWidth: 500, mb: 6 }} //  keeps them centered & not too wide
       >
         {items.map((it) => (
           <Grid item xs={12} key={it.label}>

@@ -3,27 +3,40 @@ import ProjectCard from '@/components/ProjectCard';
 
 
 const projects = [
-
+{
+title: 'DelphiShell',
+description: 'C based shell with trainable Transformer based NN built-in to assist users with commands and simple tasks. Shell for DelphiOS',
+href: 'https://github.com/Mereck600/DelphiShell',
+tags: ['C', 'Python', 'Make'],
+tilt: { x: -6, y: 10 },
+},
+{
+title: 'Evala',
+description: 'Java based programming language to designed to generate test cases and grade code.',
+href: 'https://github.com/Mereck600/Evala',
+tags: ['Java'],
+tilt: { x: -7, y: 10 },
+},
 {
 title: 'Reinforcement911',
 description: 'Nonprofit website with Stripe donations, Dockerized deploys, and AWS infra.',
 href: 'https://reinforcement911.org',
 tags: ['Next.js', 'Stripe', 'AWS'],
-tilt: { x: -6, y: 10 },
+tilt: { x: -5, y: 10 },
 },
 {
 title: 'Northland Psychological',
 description: 'Psychological Clinic website with Dockerized deploys, and AWS infra.',
 href: 'https://northlandpsychological.com/',
 tags: ['React.js', 'Stripe', 'AWS'],
-tilt: { x: -6, y: 10 },
+tilt: { x: -6, y: 12 },
 },
 {
 title: 'Reinforcement Consulting',
 description: 'Consulting website with Dockerized deploys, and AWS infra.',
 href: 'https://reinforcement911.org',
 tags: ['React.js', 'Stripe', 'AWS'],
-tilt: { x: -6, y: 10 },
+tilt: { x: -3, y: 7 },
 },
 {
 title: 'Mereckos',
@@ -45,13 +58,6 @@ description: 'ETL + analytics for logistics auditing, heavy SQL and Python data 
 href: 'https://github.com/mereck600',
 tags: ['Python', 'PostgreSQL', 'Pandas'],
 tilt: { x: 10, y: 6 },
-},
-{
-title: 'CaseNetsClassifier',
-description: 'Experimental case‑based reasoning with Siamese nets and PyTorch.',
-href: 'https://github.com/mereck600',
-tags: ['PyTorch', 'CBR', 'DL'],
-tilt: { x: -9, y: -5 },
 },
 ];
 
