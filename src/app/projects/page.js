@@ -1,105 +1,117 @@
-import { Stack, Typography,Box } from '@mui/material';
+import { Box, Typography, Grid } from '@mui/material';
 import ProjectCard from '@/components/ProjectCard';
 
-
 const projects = [
-{
-title: 'DelphiShell',
-description: 'C based shell with trainable Transformer based NN built-in to assist users with commands and simple tasks. Shell for DelphiOS',
-href: 'https://github.com/Mereck600/DelphiShell',
-tags: ['C', 'Python', 'Make'],
-tilt: { x: -6, y: 10 },
-},
-{
-title: 'Evala',
-description: 'Java based programming language to designed to generate test cases and grade code.',
-href: 'https://github.com/Mereck600/Evala',
-tags: ['Java'],
-tilt: { x: -7, y: 10 },
-},
-{
-title: 'Reinforcement911',
-description: 'Nonprofit website with Stripe donations, Dockerized deploys, and AWS infra.',
-href: 'https://reinforcement911.org',
-tags: ['Next.js', 'Stripe', 'AWS'],
-tilt: { x: -5, y: 10 },
-},
-{
-title: 'Northland Psychological',
-description: 'Psychological Clinic website with Dockerized deploys, and AWS infra.',
-href: 'https://northlandpsychological.com/',
-tags: ['React.js', 'Stripe', 'AWS'],
-tilt: { x: -6, y: 12 },
-},
-{
-title: 'Reinforcement Consulting',
-description: 'Consulting website with Dockerized deploys, and AWS infra.',
-href: 'https://reinforcement911.org',
-tags: ['React.js', 'Stripe', 'AWS'],
-tilt: { x: -3, y: 7 },
-},
-{
-title: 'Mereckos',
-description: 'Simple OS (in progress) fat12 file system, C development',
-href: 'https://github.com/Mereck600/MereckOS',
-tags: ['ASM', 'C','makeFiles'],
-tilt: { x: 10, y: 6 },
-},
-{
-title: 'BluetoothPi',
-description: 'Raspberry Pi 5 speaker controller with realtime LED effects and a React dashboard.',
-href: 'https://github.com/Mereck600/BluetoothPi',
-tags: ['Raspberry Pi', 'FastAPI', 'React'],
-tilt: { x: 8, y: -8 },
-},
-{
-title: 'FleetPay Audit',
-description: 'ETL + analytics for logistics auditing, heavy SQL and Python data wrangling, created for Mohawk Industries.',
-href: 'https://github.com/mereck600',
-tags: ['Python', 'PostgreSQL', 'Pandas'],
-tilt: { x: 10, y: 6 },
-},
+  {
+    title: 'Reinforcement911',
+    description: 'Nonprofit platform with Stripe donations, Dockerized deploys, and AWS infrastructure for a public safety organization.',
+    href: 'https://reinforcement911.org',
+    tags: ['Next.js', 'Stripe', 'Docker', 'AWS'],
+    category: 'Full-Stack',
+  },
+  {
+    title: 'Northland Psychological',
+    description: 'Full-stack clinic website with appointment booking, Dockerized deploys, and AWS hosting.',
+    href: 'https://northlandpsychological.com/',
+    tags: ['React.js', 'Docker', 'AWS'],
+    category: 'Full-Stack',
+  },
+  {
+    title: 'Reinforcement Consulting',
+    description: 'Consulting firm website with modern React frontend, Dockerized deploys, and cloud infrastructure.',
+    href: 'https://reinforcement911.org',
+    tags: ['React.js', 'Docker', 'AWS'],
+    category: 'Full-Stack',
+  },
+  {
+    title: 'BluetoothPi',
+    description: 'Raspberry Pi 5 Bluetooth speaker controller with real-time LED effects and a live React dashboard.',
+    href: 'https://github.com/Mereck600/BluetoothPi',
+    tags: ['React', 'FastAPI', 'Raspberry Pi'],
+    category: 'Systems',
+  },
+  {
+    title: 'DelphiShell',
+    description: 'C-based Unix shell with a trainable Transformer neural network built-in to assist users with commands — part of the DelphiOS project.',
+    href: 'https://github.com/Mereck600/DelphiShell',
+    tags: ['C', 'Python', 'Transformer', 'ML'],
+    category: 'ML / Systems',
+  },
+  {
+    title: 'Evala',
+    description: 'Custom Java programming language designed to automatically generate test cases and grade student code submissions.',
+    href: 'https://github.com/Mereck600/Evala',
+    tags: ['Java', 'Compilers', 'PL Design'],
+    category: 'Systems',
+  },
+  {
+    title: 'Mereckos',
+    description: 'Hobby OS with FAT12 filesystem support, bootloader, and memory management written in x86 Assembly and C.',
+    href: 'https://github.com/Mereck600/MereckOS',
+    tags: ['x86 ASM', 'C', 'Makefile'],
+    category: 'Systems',
+  },
+  {
+    title: 'FleetPay Audit',
+    description: 'ETL pipeline and analytics dashboard for logistics fleet auditing. Heavy SQL and Python data wrangling built for Mohawk Industries.',
+    href: 'https://github.com/mereck600',
+    tags: ['Python', 'PostgreSQL', 'Pandas'],
+    category: 'Data',
+  },
 ];
 
-
-
-
+const categories = ['All', ...Array.from(new Set(projects.map((p) => p.category)))];
 
 export default function ProjectsPage() {
   return (
-    <section>
-      <Box
-      sx={{
-        display: 'flex',
-        flexDirection: 'column',
-        alignItems: 'center', 
-        textAlign: 'center',
-      }}
-    >
-
-      {/* TITLE */}
-      <Typography variant="h3" fontWeight={700} gutterBottom>
-        Projects
-      </Typography>
-
-      {/* DESCRIPTION */}
-      <Typography
-        variant="body1"
-        color="text.secondary"
-        sx={{ maxWidth: 600, mb: 4 }}
-      >
-        Feel free to check out some of my recent projects!
-      </Typography>
-      <Stack spacing={3}>
-        {projects.map((p) => (
-          <ProjectCard key={p.title} project={p} />
-        ))}
-      </Stack>
-
+    <Box component="section" sx={{ position: 'relative', zIndex: 1 }}>
+      {/* Header */}
+      <Box sx={{ mb: 8 }}>
+        <Typography
+          sx={{
+            fontFamily: "'JetBrains Mono', monospace",
+            fontSize: '0.72rem',
+            color: 'var(--accent-purple)',
+            letterSpacing: '0.18em',
+            textTransform: 'uppercase',
+            mb: 1.5,
+            display: 'flex',
+            alignItems: 'center',
+            gap: 1,
+            '&::before': {
+              content: '""',
+              display: 'inline-block',
+              width: 24,
+              height: 1,
+              background: 'var(--accent-purple)',
+              opacity: 0.6,
+            },
+          }}
+        >
+          Selected Work
+        </Typography>
+        <Typography
+          variant="h2"
+          sx={{ fontSize: { xs: '2rem', md: '3rem' }, mb: 2 }}
+        >
+          Projects
+        </Typography>
+        <Typography variant="body1" color="text.secondary" sx={{ maxWidth: 560 }}>
+          A selection of things I&apos;ve built — spanning full-stack web apps, systems
+          programming, ML research, and hardware projects.
+        </Typography>
       </Box>
-      
-      
-     
-    </section>
+
+      {/* Grid */}
+      <Grid container spacing={2.5}>
+        {projects.map((p) => (
+          <Grid item xs={12} sm={6} lg={4} key={p.title}>
+            <ProjectCard project={p} />
+          </Grid>
+        ))}
+      </Grid>
+
+      <Box sx={{ height: 80 }} />
+    </Box>
   );
 }
