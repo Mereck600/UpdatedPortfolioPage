@@ -75,7 +75,7 @@ export default function HomePage() {
             opacity: 0.9,
           }}
         >
-          hello, world i'm ...
+          hello, world i&apos;m ...
         </Typography>
 
         <Typography
