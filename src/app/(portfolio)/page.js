@@ -1,15 +1,16 @@
 import { Box, Typography, Stack, Chip, Grid } from '@mui/material';
+import FlyAroundButton from '@/components/FlyAroundButton';
 
 const skills = [
   {
     category: 'Frontend',
     color: '#8b5cf6',
-    items: ['React', 'Next.js', 'TypeScript', 'Tailwind CSS', 'MUI', 'Framer Motion'],
+    items: ['React', 'Next.js', 'TypeScript', 'CSS', 'MUI', 'Framer Motion'],
   },
   {
     category: 'Backend',
     color: '#3b82f6',
-    items: ['Node.js', 'FastAPI', 'PostgreSQL', 'Docker', 'AWS', 'REST APIs'],
+    items: ['Node.js', 'FastAPI', 'PostgreSQL','MongoDB', 'Docker', 'AWS', 'REST APIs','Java','Python'],
   },
   {
     category: 'ML / AI',
@@ -19,7 +20,7 @@ const skills = [
   {
     category: 'Systems',
     color: '#f59e0b',
-    items: ['C', 'x86 Assembly', 'Linux', 'Makefile', 'RTOS'],
+    items: ['C','C++', 'x86 Assembly', 'Linux', 'Make'],
   },
 ];
 
@@ -74,7 +75,7 @@ export default function HomePage() {
             opacity: 0.9,
           }}
         >
-          hello, world —
+          hello, world i'm ...
         </Typography>
 
         <Typography
@@ -148,6 +149,7 @@ export default function HomePage() {
           >
             View Projects
           </Box>
+          <FlyAroundButton />
           <Box
             component="a"
             href="/contact"
@@ -296,7 +298,7 @@ export default function HomePage() {
                   background: 'rgba(255,255,255,0.02)',
                 }}
               >
-                <Stack direction="row" justifyContent="space-between" alignItems="flex-start">
+                <Stack direction="column" spacing={0.5} sx={{ mb: 0.5 }}>
                   <Typography variant="body1" fontWeight={600}>{a.title}</Typography>
                   <Typography
                     sx={{
@@ -315,6 +317,102 @@ export default function HomePage() {
             </Grid>
           ))}
         </Grid>
+      </Box>
+
+      {/* ── RESEARCH ─────────────────────────────────────────────────────── */}
+      <Box component="section" sx={{ py: 10, position: 'relative', zIndex: 1 }}>
+        <SectionLabel>Research</SectionLabel>
+        <Typography variant="h3" sx={{ mb: 6, fontSize: { xs: '1.8rem', md: '2.4rem' } }}>
+          Publications
+        </Typography>
+
+        <Box
+          sx={{
+            p: 3.5,
+            maxWidth: 760,
+            border: '1px solid rgba(34,211,238,0.2)',
+            borderRadius: '14px',
+            background: 'rgba(34,211,238,0.03)',
+            position: 'relative',
+            overflow: 'hidden',
+            '&::before': {
+              content: '""',
+              position: 'absolute',
+              top: 0, left: 0, right: 0,
+              height: '2px',
+              background: 'linear-gradient(90deg, transparent, rgba(34,211,238,0.6), transparent)',
+            },
+          }}
+        >
+          {/* Venue badge */}
+          <Box sx={{ display: 'flex', alignItems: 'center', gap: 1.5, mb: 2 }}>
+            <Box
+              sx={{
+                px: 1.25, py: 0.35,
+                borderRadius: '6px',
+                background: 'rgba(34,211,238,0.1)',
+                border: '1px solid rgba(34,211,238,0.3)',
+                fontFamily: "'JetBrains Mono', monospace",
+                fontSize: '0.68rem',
+                color: 'var(--accent-cyan)',
+                letterSpacing: '0.1em',
+                textTransform: 'uppercase',
+              }}
+            >
+              IJCAI 2026
+            </Box>
+            <Box
+              sx={{
+                px: 1.25, py: 0.35,
+                borderRadius: '6px',
+                background: 'rgba(139,92,246,0.1)',
+                border: '1px solid rgba(139,92,246,0.3)',
+                fontFamily: "'JetBrains Mono', monospace",
+                fontSize: '0.68rem',
+                color: 'var(--accent-purple)',
+                letterSpacing: '0.1em',
+              }}
+            >
+              Accepted ✓
+            </Box>
+          </Box>
+
+          <Typography variant="h6" sx={{ fontWeight: 600, fontSize: '1rem', mb: 1, lineHeight: 1.4 }}>
+            NN-kNN for Regression: Accurate Prediction from Interpretable Retrieval
+          </Typography>
+
+          <Typography
+            variant="body2"
+            sx={{
+              fontFamily: "'JetBrains Mono', monospace",
+              fontSize: '0.72rem',
+              color: 'text.secondary',
+              mb: 2,
+              lineHeight: 1.7,
+            }}
+          >
+            Xiaomeng Ye, Yu Wang, David Leake, David Crandall, Great Abhieyighan,{' '}
+            <Box component="span" sx={{ color: 'var(--accent-cyan)' }}>Mereck McGowan</Box>
+          </Typography>
+
+          <Typography variant="body2" color="text.secondary" sx={{ mb: 2.5, lineHeight: 1.75, fontSize: '0.875rem' }}>
+            Neural Network k-Nearest Neighbor (NN-kNN) was proposed as an interpretable network model
+            that learns feature weights and similarity to retrieve relevant cases for classification.
+            This paper extends it to regression with the goal of generating accurate predictions based
+            on neighboring cases with similar labels. We introduce three modular components: an attention
+            mechanism that weights retrieved cases, a locality-aware regularizer that favors label-similar
+            neighbors, and an optional case adaptation module. Across synthetic and standard tabular
+            regression benchmarks, NN-kNN achieves competitive predictive error against strong baselines
+            while providing interpretable label-similar case explanations and supporting manual knowledge
+            injection through human-comprehensible feature weights.
+          </Typography>
+
+          <Stack direction="row" sx={{ flexWrap: 'wrap', gap: 0.75 }}>
+            {['Machine Learning', 'Interpretable AI', 'Case-Based Reasoning', 'Regression', 'Neural Networks'].map((t) => (
+              <Chip key={t} label={t} size="small" variant="outlined" sx={tagSx} />
+            ))}
+          </Stack>
+        </Box>
       </Box>
 
       <Box sx={{ height: 80 }} />

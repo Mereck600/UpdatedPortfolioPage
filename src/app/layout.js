@@ -1,13 +1,12 @@
 import './globals.css';
 import ThemeRegistry from '@/app/ThemeRegistry';
 import Providers from '@/components/Providers';
-import ClientLayout from '@/components/ClientLayout';
 
 export const metadata = {
   title: 'Mereck McGowan – Portfolio',
   description: 'Portfolio of Mereck McGowan',
   icons: {
-    icon: '/logo.png',   
+    icon: '/logo.png',
   },
 };
 
@@ -25,7 +24,7 @@ export default function RootLayout({ children }) {
       <body>
         <ThemeRegistry>
           <Providers>
-            <ClientLayout>{children}</ClientLayout>
+            {children}
           </Providers>
         </ThemeRegistry>
       </body>

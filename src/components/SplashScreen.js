@@ -65,6 +65,7 @@ export default function SplashScreen({
           initial={{ opacity: 0, scale: 0.96 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: fadeIn, ease: 'easeInOut' }}
+          style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 24 }}
         >
           {mode === 'fill' ? (
             <div style={{ position: 'relative', width: '80vw', height: '40vh' }}>
@@ -86,6 +87,17 @@ export default function SplashScreen({
               priority
             />
           )}
+
+          <p style={{
+            margin: 0,
+            fontFamily: "'JetBrains Mono', 'Courier New', monospace",
+            fontSize: '0.72rem',
+            letterSpacing: '0.18em',
+            textTransform: 'uppercase',
+            color: 'rgba(34,211,238,0.7)',
+          }}>
+            For best experience, view on desktop
+          </p>
         </motion.div>
 
         <motion.div

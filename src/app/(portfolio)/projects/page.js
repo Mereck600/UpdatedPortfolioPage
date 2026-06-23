@@ -13,7 +13,7 @@ const projects = [
     title: 'Northland Psychological',
     description: 'Full-stack clinic website with appointment booking, Dockerized deploys, and AWS hosting.',
     href: 'https://northlandpsychological.com/',
-    tags: ['React.js', 'Docker', 'AWS'],
+    tags: ['Next.js', 'Docker', 'AWS'],
     category: 'Full-Stack',
   },
   {

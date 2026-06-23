@@ -5,6 +5,7 @@ import { Container, Box } from '@mui/material';
 import Navbar from '@/components/Navbar';
 import SplashScreen from '@/components/SplashScreen';
 import AnimatedBackground from '@/components/AnimatedBackground';
+import SpaceshipCursor from '@/components/SpaceshipCursor';
 
 export default function ClientLayout({ children }) {
   const [showSplash, setShowSplash] = useState(true);
@@ -17,6 +18,7 @@ export default function ClientLayout({ children }) {
   return (
     <Box sx={{ minHeight: '100vh', background: '#04040f', position: 'relative' }}>
       <AnimatedBackground />
+      <SpaceshipCursor />
 
       {showSplash && (
         <SplashScreen
