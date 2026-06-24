@@ -12,6 +12,10 @@ const PROJECTS = [
   { title: 'Evala', description: 'Java programming language that auto-generates test cases and grades code.', href: 'https://github.com/Mereck600/Evala', tags: ['Java', 'Compilers'] },
   { title: 'Mereckos', description: 'Hobby OS with FAT12 filesystem, bootloader, and memory management.', href: 'https://github.com/Mereck600/MereckOS', tags: ['x86 ASM', 'C'] },
   { title: 'FleetPay Audit', description: 'ETL pipeline and analytics for logistics fleet auditing at Mohawk Industries.', href: 'https://github.com/mereck600', tags: ['Python', 'PostgreSQL'] },
+  { title:'NearBeer', description:'Near Beer is a web app to create pub crawls based on users location and preferences.', href:'https://github.com/Mereck600/NearBeer',tags:['Next.js','MongoDB','Docker'] },
+  { title: 'VR Racing Game',description: 'Driving Simulator with custom assets, mechanics and maps.',href: 'https://github.com/Mereck600/first-unity-project/tree/main',tags: ['C','C#','C++'],},
+  {title: 'Legends of Atheria',description: '2d Zelda inspired game.',href: 'https://github.com/Mereck600/2dGame',tags: ['Java'],category: 'Game Development',},
+  {title: 'Robotic-Arm-Arduino',description: 'Simple robotic arm',href: 'https://github.com/Mereck600/Robotic-Arm-Arduino',tags: ['C++'],},
 ];
 
 function randomBetween(a, b) { return a + Math.random() * (b - a); }

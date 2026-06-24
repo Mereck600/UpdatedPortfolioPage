@@ -1,5 +1,7 @@
 import { Box, Typography, Grid } from '@mui/material';
 import ProjectCard from '@/components/ProjectCard';
+import { desc } from 'framer-motion/client';
+import { DescriptionOutlined } from '@mui/icons-material';
 
 const projects = [
   {
@@ -24,15 +26,15 @@ const projects = [
     category: 'Full-Stack',
   },
   {
-    title: 'BluetoothPi',
-    description: 'Raspberry Pi 5 Bluetooth speaker controller with real-time LED effects and a live React dashboard.',
-    href: 'https://github.com/Mereck600/BluetoothPi',
-    tags: ['React', 'FastAPI', 'Raspberry Pi'],
-    category: 'Systems',
+    title:'NearBeer',
+    description:'Near Beer is a web app to create pub crawls based on users location and preferences.',
+    href:'https://github.com/Mereck600/NearBeer',
+    tags:['Next.js','MongoDB','Docker'],
+    category:'Full-Stack',
   },
   {
     title: 'DelphiShell',
-    description: 'C-based Unix shell with a trainable Transformer neural network built-in to assist users with commands — part of the DelphiOS project.',
+    description: 'C-based Unix shell with a trainable Transformer neural network built-in to translate natural language to bash commands — part of the DelphiOS project.',
     href: 'https://github.com/Mereck600/DelphiShell',
     tags: ['C', 'Python', 'Transformer', 'ML'],
     category: 'ML / Systems',
@@ -44,6 +46,13 @@ const projects = [
     tags: ['Java', 'Compilers', 'PL Design'],
     category: 'Systems',
   },
+   {
+    title: 'FleetPay Audit',
+    description: 'ETL pipeline and analytics dashboard for logistics fleet auditing. Heavy SQL and Python data wrangling built for Mohawk Industries.',
+    href: 'https://github.com/mereck600',
+    tags: ['Python', 'PostgreSQL', 'Pandas'],
+    category: 'Data',
+  },
   {
     title: 'Mereckos',
     description: 'Hobby OS with FAT12 filesystem support, bootloader, and memory management written in x86 Assembly and C.',
@@ -52,12 +61,34 @@ const projects = [
     category: 'Systems',
   },
   {
-    title: 'FleetPay Audit',
-    description: 'ETL pipeline and analytics dashboard for logistics fleet auditing. Heavy SQL and Python data wrangling built for Mohawk Industries.',
-    href: 'https://github.com/mereck600',
-    tags: ['Python', 'PostgreSQL', 'Pandas'],
-    category: 'Data',
+    title: 'VR Racing Game',
+    description: 'Driving Simulator with custom assets, mechanics and maps.',
+    href: 'https://github.com/Mereck600/first-unity-project/tree/main',
+    tags: ['C','C#','C++'],
+    category: 'Game Development',
   },
+  {
+    title: 'Legends of Atheria',
+    description: '2d Zelda inspired game.',
+    href: 'https://github.com/Mereck600/2dGame',
+    tags: ['Java'],
+    category: 'Game Development',
+  },
+  {
+    title: 'Robotic-Arm-Arduino',
+    description: 'Simple robotic arm',
+    href: 'https://github.com/Mereck600/Robotic-Arm-Arduino',
+    tags: ['C++'],
+    category: 'Systems',
+  },
+  {
+    title: 'BluetoothPi',
+    description: 'Raspberry Pi 5 Bluetooth speaker controller with real-time LED effects and a live React dashboard.',
+    href: 'https://github.com/Mereck600/BluetoothPi',
+    tags: ['React', 'FastAPI', 'Raspberry Pi'],
+    category: 'Systems',
+  },
+  
 ];
 
 const categories = ['All', ...Array.from(new Set(projects.map((p) => p.category)))];
